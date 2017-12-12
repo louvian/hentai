@@ -15,7 +15,7 @@
 	sacred.src = "https://static.mieinstance.cf/hentai/pururin/<?php print $dt['id']; ?>/" + pointer + ".jpg";
 	sacred.addEventListener('click', function () {
 		if (pointer === pages) {
-			pointer = 0;
+			pointer = 1;
 		} else {
 			pointer++;
 		}
