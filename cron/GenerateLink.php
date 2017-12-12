@@ -21,8 +21,8 @@ class GenerateLink
 
 	private static function pururin()
 	{
-		if (file_exists(__DIR__."/assets/pururin/pointer")) {
-			$pointer = (int) file_get_contents(__DIR__."/assets/pururin/pointer");
+		if (file_exists(__DIR__."/../assets/pururin/pointer")) {
+			$pointer = (int) file_get_contents(__DIR__."/../assets/pururin/pointer");
 		} else {
 			$pointer = 1;
 		}
@@ -38,7 +38,7 @@ class GenerateLink
 				$link[] = implode("/", $val[0]);
 			}
 		}
-		file_put_contents(__DIR__."/assets/pururin/pointer", $pointer+1);
+		file_put_contents(__DIR__."/../assets/pururin/pointer", $pointer+1);
 		return $link;
 	}
 }

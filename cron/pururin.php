@@ -2,19 +2,19 @@
 
 date_default_timezone_set("Asia/Jakarta");
 
-if (file_exists(__DIR__."/assets/pururin/lock")) {
+if (file_exists(__DIR__."/../assets/pururin/lock")) {
 	print "[".date("Y-m-d H:i:s")."] Locked\n";
 	exit(0);
 } else {
-	file_put_contents(__DIR__."/assets/pururin/lock", 1);
+	file_put_contents(__DIR__."/../assets/pururin/lock", 1);
 }
 
 require __DIR__ . "/../vendor/autoload.php";
 
 $saveDir  = __DIR__ . "/../assets/pururin";
 
-if (file_exists(__DIR__ . "/assets/pururin/pending_files.txt")) {
-	$mangaUrls = explode("\n", __DIR__ . "/assets/pururin/pending_files.txt");
+if (file_exists(__DIR__."/../assets/pururin/pending_files.txt")) {
+	$mangaUrls = explode("\n", __DIR__."/../assets/pururin/pending_files.txt");
 }
 
 if (empty($mangaUrls)) {
@@ -53,8 +53,8 @@ foreach ($mangaUrls as $mangaUrl) {
 			}
 		}
 	} catch (\Exception $e) {
-		file_put_contents(__DIR__ . "/assets/pururin/pending_files.txt", $mangaUrl, FILE_APPEND | LOCK_EX);
+		file_put_contents(__DIR__."/../assets/pururin/pending_files.txt", $mangaUrl, FILE_APPEND | LOCK_EX);
 		echo "Pending\n";
 	}
 }
-unlink(__DIR__."/assets/pururin/lock");
+unlink(__DIR__."/../assets/pururin/lock");
