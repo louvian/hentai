@@ -27,7 +27,9 @@ while ($dt = $st->fetch(PDO::FETCH_ASSOC)) {
 		print "Invalid data $dt[id]!\n";
 		$i = 1;
 		print "Repairing data $dt[id]...\n";
+		var_dump($dt['info']['Pages'], $i);
 		while (! file_exists($path."/".$i.".jpg") && $i <= $dt['info']['Pages']) {
+			var_dump($dt['info']['Pages'], $i);
 			shell_exec("cd ".$path. "&& wget http://pururin.us/assets/images/data/".$dt['id']."/".$i.".jpg >> /dev/null 2>&1");
 			if (file_exists($path."/".$i.".jpg")) {
 				print "Asset $i $dt[id] repaired!\n";
