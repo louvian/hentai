@@ -22,33 +22,54 @@ while ($dt = $st->fetch(PDO::FETCH_ASSOC)) {
 	}*/
 	$dt['info'] = json_decode($dt['info'], true);
 	$path = PURURIN_DATA."/".$dt['id'];
-	print "Checking $dt[id]...\n";
-	if (! file_exists($path."/".$dt['info']['Pages'].".jpg")) {
-		print "Invalid data $dt[id]!\n";
-		$i = 1;
-		print "Repairing data $dt[id]...\n";
-		while ($i <= $dt['info']['Pages']) {
-			if (file_exists($path."/".$i.".jpg")) {
-				echo "Asset $i validated\n";
-			} else {
-				shell_exec("cd ".$path. "&& wget http://pururin.us/assets/images/data/".$dt['id']."/".$i.".jpg >> /dev/null 2>&1");
-				if (file_exists($path."/".$i.".jpg")) {
-					print "Asset $i $dt[id] repaired!\n";
-				} else {
-					shell_exec("cd ".$path. "&& wget http://pururin.us/assets/images/data/".$dt['id']."/".$i.".png -O ".$i.".jpg >> /dev/null 2>&1");
-					if (file_exists($path."/".$i.".jpg")) {
-						print "Asset $i $dt[id] repaired successfully!\n";
+	print "Checking ID ".$dt['id']."...\n";
+	$i = 0;
+	while ($i <= $dt['info']['Pages']) {
+		if ($i === 0) {
+			if (! is_valid_file($path."/cover.jpg")) {
+				print "Invalid cover.jpg\n";
+				print "Downloading cover.jpg...\n";
+				shell_exec("cd $path && wget http://pururin.us/assets/images/data/".$dt['id']."/cover.jpg");
+				if (! is_valid_file($path."/cover.jpg")) {
+					print "Invalid cover.jpg\n";
+					shell_exec("cd $path && wget http://pururin.us/assets/images/data/".$dt['id']."/cover.png -O cover.jpg");
+					if (! is_valid_file($path."/cover.jpg")) {
+						print "Invalid cover absolutely\n";
 					} else {
-						print "Asset $i $dt[id] failed to repair!\n";
+						print "cover.jpg has been repaired with cover.png\n";
 					}
+				} else {
+					print "cover.jpg has been repaired!\n";
 				}
+			} else {
+				print "cover.jpg is valid!\n";
 			}
-			$i++;
+		} else {
+			if (! is_valid_file($path."/".$i.".jpg")) {
+				print "Invalid $i.jpg";
+				print "Downloading $i.jpg...\n";
+				shell_exec("cd $path && wget http://pururin.us/assets/images/data/".$dt['id']."/$i.jpg");
+				if (! is_valid_file($path."/$i.jpg")) {
+					print "Invalid $i.jpg\n";
+					shell_exec("cd $path && wget http://pururin.us/assets/images/data/".$dt['id']."/$i.png -O $i.jpg");
+					if (! is_valid_file($path."/$i.jpg")) {
+						print "Invalid $i.jpg absolutely\n";
+					} else {
+						print "$i.jpg has been repaired with $i.png\n";
+					}
+				} else {
+					print "$i.jpg has been repaired!\n";
+				}
+			} else {
+				print "$i.jpg is valid!\n";
+			}
 		}
-	} else {
-		print "Valid $dt[id]\n";
+		$i++;
 	}
-	print "\n\n";
 }
 
 
+function is_valid_file($file)
+{
+	return file_exists($file) && (filesize($file) > 0);
+}
