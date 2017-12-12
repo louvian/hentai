@@ -1,3 +1,4 @@
+*.tmp
 *.lock
 /config.php
 /vendor/
