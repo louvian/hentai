@@ -2,6 +2,8 @@
 
 namespace Cron;
 
+use Curl\Curl;
+
 class GenerateLink
 {
 	public static function generate($site)
@@ -19,7 +21,12 @@ class GenerateLink
 
 	private static function pururin()
 	{
-		$a = file_get_contents("../a.tmp");
+		if (file_exists(__DIR__."/assets/pururin/pointer")) {
+			$pointer = (int) file_get_contents(__DIR__."/assets/pururin/pointer");
+		} else {
+			$pointer = 1;
+		}
+		$ch = new Curl("http://pururin.us/browse/search?q=rape&sType=normal&page=".$pointer);
 		$a = explode("<div class=\"gallery-listing\"", $a, 2);
 		$a = explode("<a href=\"", $a[1]);
 		$link = [];
@@ -31,6 +38,7 @@ class GenerateLink
 				$link[] = implode("/", $val[0]);
 			}
 		}
+		file_put_contents(__DIR__."/assets/pururin/pointer", $pointer+1);
 		return $link;
 	}
 }
