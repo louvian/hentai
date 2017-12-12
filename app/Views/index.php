@@ -10,14 +10,15 @@
 	<title>Hentai</title>
 </head>
 <body>
+<center>
 <div id="bound"></div>
-</body>
+</center>
 <script type="text/javascript">
 	function buildData(data)
 	{
 		var x, r = "<table>", i = 0, wd;
 		for (x in data) {
-			wd = "<td><img alt=\""+data[x]['title']+"\" src=\"http://static.mieinstance.cf/hentai/pururin/"+data[x]['id']+"/cover.jpg\"></td>";
+			wd = "<td><a href=\"http://hentai.mieinstance.cf/api.php?read="+data[x]['id']+"\"><img alt=\""+data[x]['title']+"\" src=\"http://static.mieinstance.cf/hentai/pururin/"+data[x]['id']+"/cover.jpg\"></a></td>";
 			if (i % 5 === 0 || i === 0 ) {
 				r += (i > 0 ? "</tr>" : "") + "<tr>" + wd;
 			} else {
@@ -35,4 +36,5 @@
 		ch.open("GET", "http://hentai.mieinstance.cf/api.php?page=newest");
 		ch.send(null);
 </script>
+</body>
 </html>
