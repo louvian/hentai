@@ -29,10 +29,10 @@ while ($dt = $st->fetch(PDO::FETCH_ASSOC)) {
 			if (! is_valid_file($path."/cover.jpg")) {
 				print "Invalid cover.jpg\n";
 				print "Downloading cover.jpg...\n";
-				shell_exec("cd $path && wget http://pururin.us/assets/images/data/".$dt['id']."/cover.jpg >> /dev/null");
+				shell_exec("cd $path && wget http://pururin.us/assets/images/data/".$dt['id']."/cover.jpg >> /dev/null 2>&1");
 				if (! is_valid_file($path."/cover.jpg")) {
 					print "Invalid cover.jpg\n";
-					shell_exec("cd $path && wget http://pururin.us/assets/images/data/".$dt['id']."/cover.png -O cover.jpg >> /dev/null");
+					shell_exec("cd $path && wget http://pururin.us/assets/images/data/".$dt['id']."/cover.png -O cover.jpg >> /dev/null 2>&1");
 					if (! is_valid_file($path."/cover.jpg")) {
 						print "Invalid cover absolutely\n";
 					} else {
@@ -48,10 +48,10 @@ while ($dt = $st->fetch(PDO::FETCH_ASSOC)) {
 			if (! is_valid_file($path."/".$i.".jpg")) {
 				print "Invalid $i.jpg\n";
 				print "Downloading $i.jpg...\n";
-				shell_exec("cd $path && wget http://pururin.us/assets/images/data/".$dt['id']."/$i.jpg >> /dev/null");
+				shell_exec("cd $path && wget http://pururin.us/assets/images/data/".$dt['id']."/$i.jpg >> /dev/null 2>&1");
 				if (! is_valid_file($path."/$i.jpg")) {
 					print "Invalid $i.jpg\n";
-					shell_exec("cd $path && wget http://pururin.us/assets/images/data/".$dt['id']."/$i.png -O $i.jpg >> /dev/null");
+					shell_exec("cd $path && wget http://pururin.us/assets/images/data/".$dt['id']."/$i.png -O $i.jpg >> /dev/null 2>&1");
 					if (! is_valid_file($path."/$i.jpg")) {
 						print "Invalid $i.jpg absolutely\n";
 					} else {
