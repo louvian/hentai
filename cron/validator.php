@@ -12,7 +12,7 @@ while ($dt = $st->fetch(PDO::FETCH_ASSOC)) {
 	print "Validating $dt[id]...\n";
 	$dt['info'] = json_decode($dt['info'], true);
 	$app = new Validator(
-		$dt['origin_url'], 
+		$dt['origin_link'], 
 		$dt['info']['Pages'], 
 		PURURIN_DATA."/".$dt['id']
 	);
@@ -21,4 +21,5 @@ while ($dt = $st->fetch(PDO::FETCH_ASSOC)) {
 		print "Valid $dt[origin_link]\n";
 	}
 }
+
 
