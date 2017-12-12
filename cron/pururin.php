@@ -33,7 +33,7 @@ if (file_exists(PURURIN_DATA."/pending_files.txt")) {
 	if (! empty($mangaUrls)) {
 		foreach ($mangaUrls as $key => $val) {
 			print "Downloading pending files $key...";
-			if (($ex = process($key)) === true) {
+			if (($ex = process($key, $val)) === true) {
 				unset($mangaUrls[$key]);
 			} else {
 				$mangaUrls[$key] = $ex->getPoint();
@@ -72,13 +72,14 @@ function normal()
 }
 
 
-function process($mangaUrl)
+function process($mangaUrl, $val = 1)
 {
 	try {
 		$app = new PururinCrawler(
 			[
 				"save_directory" => PURURIN_DATA,
-				"manga_url"		 => $mangaUrl
+				"manga_url"		 => $mangaUrl,
+				"offset"		 => 1
 			]
 		);
 		if ($app->run()) {
