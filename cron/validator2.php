@@ -5,7 +5,7 @@ require __DIR__ . "/../vendor/autoload.php";
 use System\DB;
 use Pururin\Validator;
 
-$st = DB::prepare("SELECT * FROM `pururin_main_data` ORDER BY `created_at` DESC;");
+$st = DB::prepare("SELECT * FROM `pururin_main_data` ORDER BY `created_at` ASC;");
 $st->execute();
 
 while ($dt = $st->fetch(PDO::FETCH_ASSOC)) {
