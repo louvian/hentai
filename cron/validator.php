@@ -32,6 +32,7 @@ while ($dt = $st->fetch(PDO::FETCH_ASSOC)) {
 			if (file_exists($path."/".$i.".jpg")) {
 				print "Asset $i $dt[id] repaired!\n";
 			} else {
+				shell_exec("cd ".$path. "&& wget http://pururin.us/assets/images/data/".$dt['id']."/".$i.".png -O ".$i.".jpg >> /dev/null 2>&1");
 				print "Asset $i $dt[id] failed to repair!\n";
 			}
 			$i++;
