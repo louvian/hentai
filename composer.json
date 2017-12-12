@@ -1,0 +1,14 @@
+{
+    "name": "louvian/hentai",
+    "description": "Free hentai manga and doujinshi reader.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Louvian Lyndal",
+            "email": "louvianlyndal@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
