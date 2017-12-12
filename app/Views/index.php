@@ -18,7 +18,7 @@
 	{
 		var x, r = "<table>", i = 0, wd;
 		for (x in data) {
-			wd = "<td><a href=\"https://hentai.mieinstance.cf/api.php?read="+data[x]['id']+"\"><img alt=\""+data[x]['title']+"\" src=\"https://static.mieinstance.cf/hentai/pururin/"+data[x]['id']+"/cover.jpg\"></a></td>";
+			wd = "<td><a href=\"https://hentai.mieinstance.cf/read.php?id="+data[x]['id']+"\"><img alt=\""+data[x]['title']+"\" src=\"https://static.mieinstance.cf/hentai/pururin/"+data[x]['id']+"/cover.jpg\"></a></td>";
 			if (i % 5 === 0 || i === 0 ) {
 				r += (i > 0 ? "</tr>" : "") + "<tr>" + wd;
 			} else {
