@@ -7,6 +7,4 @@ class Reader
 	public function __construct()
 	{
 	}
-
-	
 }
