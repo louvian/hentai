@@ -21,7 +21,8 @@
             "System\\": "system/"
         },
         "files": [
-            "config.php"
+            "config.php",
+            "system/helpers.php"
         ]
     }
 }
