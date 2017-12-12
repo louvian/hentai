@@ -79,7 +79,7 @@ function process($mangaUrl, $val = 1)
 			[
 				"save_directory" => PURURIN_DATA,
 				"manga_url"		 => $mangaUrl,
-				"offset"		 => 1
+				"offset"		 => $val
 			]
 		);
 		if ($app->run()) {
