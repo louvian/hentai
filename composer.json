@@ -18,6 +18,9 @@
         "psr-4": {
             "App\\": "app/",
             "Cron\\": "cron/"
-        }
+        },
+        "files": [
+            "config.php"
+        ]
     }
 }

@@ -1,0 +1,7 @@
+<?php
+
+define("DB_HOST", "localhost");
+define("DB_NAME", "hn");
+define("DB_USER", "louvian");
+define("DB_PASS", "louvianlyndal");
+define("DB_PORT", "3306");

@@ -8,8 +8,5 @@ class Reader
 	{
 	}
 
-	public function getReader()
-	{
-		
-	}
+	
 }
