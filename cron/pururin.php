@@ -33,8 +33,10 @@ if (file_exists(PURURIN_DATA."/pending_files.txt")) {
 	if (! empty($mangaUrls)) {
 		foreach ($mangaUrls as $key => $val) {
 			print "Downloading pending files $key...";
-			if (process($key)) {
+			if (($ex = process($key)) === true) {
 				unset($mangaUrls[$key]);
+			} else {
+				$mangaUrls[$key] = $ex->getPoint();
 			}
 			file_put_contents(
 				PURURIN_DATA."/pending_files.txt", 
@@ -57,9 +59,9 @@ function normal()
 	$errors = [];
 	foreach ($mangaUrls as $val) {
 		print "Downloading $val...\n";
-		if (! process($val)) {
+		if (($ex = process($val)) !== true) {
 			print "Download error $val\n";
-			$errors[$val] = 1;
+			$errors[$val] = $ex->getPoint();
 			file_put_contents(
 				PURURIN_DATA."/pending_files.txt", 
 				json_encode($errors), 
@@ -109,7 +111,7 @@ function process($mangaUrl)
 		}
 		return true;
 	} catch (Exception $e) {
-		return false;	
+		return $e;	
 	}
 }
 
