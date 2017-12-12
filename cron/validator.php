@@ -2,7 +2,6 @@
 
 require __DIR__ . "/../vendor/autoload.php";
 
-use PDO;
 use System\DB;
 use Pururin\Validator;
 
@@ -10,7 +9,7 @@ $st = DB::prepare("SELECT * FROM `pururin_main_data` ORDER BY `created_at` ASC;"
 $st->execute();
 
 while ($dt = $st->fetch(PDO::FETCH_ASSOC)) {
-	print "Validating $dt['id']...\n";
+	print "Validating $dt[id]...\n";
 	$dt['info'] = json_decode($dt['info'], true);
 	$app = new Validator(
 		$dt['origin_url'], 
@@ -19,7 +18,7 @@ while ($dt = $st->fetch(PDO::FETCH_ASSOC)) {
 	);
 	$run = $app->run();
 	if ($run === "Valid") {
-		print "Valid $dt[origin_url]\n";
+		print "Valid $dt[origin_link]\n";
 	}
 }
 

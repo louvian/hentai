@@ -18,7 +18,7 @@
 	{
 		var x, r = "<table>", i = 0, wd;
 		for (x in data) {
-			wd = "<td><a href=\"http://hentai.mieinstance.cf/api.php?read="+data[x]['id']+"\"><img alt=\""+data[x]['title']+"\" src=\"http://static.mieinstance.cf/hentai/pururin/"+data[x]['id']+"/cover.jpg\"></a></td>";
+			wd = "<td><a href=\"https://hentai.mieinstance.cf/api.php?read="+data[x]['id']+"\"><img alt=\""+data[x]['title']+"\" src=\"https://static.mieinstance.cf/hentai/pururin/"+data[x]['id']+"/cover.jpg\"></a></td>";
 			if (i % 5 === 0 || i === 0 ) {
 				r += (i > 0 ? "</tr>" : "") + "<tr>" + wd;
 			} else {
@@ -33,7 +33,7 @@
 				document.getElementById('bound').innerHTML = buildData(JSON.parse(this.responseText));
 			}
 		};
-		ch.open("GET", "http://hentai.mieinstance.cf/api.php?page=newest");
+		ch.open("GET", "https://hentai.mieinstance.cf/api.php?page=newest");
 		ch.send(null);
 </script>
 </body>
