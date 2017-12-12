@@ -30,18 +30,27 @@ if (file_exists(PURURIN_DATA."/pending_files.txt")) {
 		file_get_contents(PURURIN_DATA."/pending_files.txt"), 
 		true
 	);
-	foreach ($mangaUrls as $key => $val) {
-		print "Downloading pending files $key...";
-		if (process($key)) {
-			unset($mangaUrls[$key]);
+	if (! empty($mangaUrls)) {
+		foreach ($mangaUrls as $key => $val) {
+			print "Downloading pending files $key...";
+			if (process($key)) {
+				unset($mangaUrls[$key]);
+			}
+			file_put_contents(
+				PURURIN_DATA."/pending_files.txt", 
+				json_encode($mangaUrls), 
+				FILE_APPEND | LOCK_EX
+			);
 		}
-		file_put_contents(
-			PURURIN_DATA."/pending_files.txt", 
-			json_encode($mangaUrls), 
-			FILE_APPEND | LOCK_EX
-		);
+	} else {
+		normal();
 	}
 } else {
+	normal();
+}
+
+function normal()
+{
 	print "Generating link...\n";
 	$mangaUrls = GenerateLink::generate('pururin');
 	print "Generated.\n";
