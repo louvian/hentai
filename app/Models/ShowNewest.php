@@ -4,7 +4,7 @@ namespace App\Models;
 
 use System\DB;
 
-class Index
+class ShowNewest
 {
 	public static function get()
 	{
