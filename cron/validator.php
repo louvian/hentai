@@ -71,5 +71,7 @@ while ($dt = $st->fetch(PDO::FETCH_ASSOC)) {
 
 function is_valid_file($file)
 {
-	return file_exists($file) && (filesize($file) > 0);
+	return file_exists($file) and (
+		(filesize($file) > 0) or unlink($file)
+	);
 }
