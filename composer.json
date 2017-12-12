@@ -10,5 +10,8 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {
+        "ammarfaizi2/php-curl": "^0.0.2",
+        "louvian/pururin-crawler": "dev-master"
+    }
 }
