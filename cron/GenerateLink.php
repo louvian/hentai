@@ -26,7 +26,7 @@ class GenerateLink
 		} else {
 			$pointer = 1;
 		}
-		$ch = new Curl("http://pururin.us/browse/search?q=full+color&sType=normal&page=".$pointer);
+		$ch = new Curl("http://pururin.us/browse/search?q=sao&sType=normal&page=1");
 		$a = explode("<div class=\"gallery-listing\"", $ch->exec(), 2);
 		if (! isset($a[1])) {
 			return [];

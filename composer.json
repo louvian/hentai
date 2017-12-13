@@ -12,7 +12,8 @@
     "minimum-stability": "dev",
     "require": {
         "ammarfaizi2/php-curl": "^0.0.2",
-        "louvian/pururin-crawler": "dev-master"
+        "louvian/pururin-crawler": "dev-master",
+        "phpunit/phpunit": "^6.5"
     },
     "autoload": {
         "psr-4": {
