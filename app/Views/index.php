@@ -34,7 +34,7 @@
 				document.getElementById('bound').innerHTML = buildData(JSON.parse(this.responseText));
 			}
 		};
-		ch.open("GET", "https://hentai.mieinstance.cf/api.php?page=newest&limit=" + (7*15);
+		ch.open("GET", "https://hentai.mieinstance.cf/api.php?page=newest&limit=" + (7*15));
 		ch.send(null);
 </script>
 </body>
