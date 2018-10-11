@@ -10,6 +10,7 @@ if (isset($_GET['page'])) {
 			break;
 		
 		default:
+			http_response_code(404);
 			break;
 	}
 }
